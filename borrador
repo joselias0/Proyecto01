@@ -1,0 +1,189 @@
+
+        
+package proyecto01;
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class Proyecto01 {
+
+    
+    public static void main(String[] args) {
+        
+        
+       
+        
+        Scanner menu = new Scanner(System.in);
+        boolean exit = false;
+        
+        while(!exit){
+            char answer;
+            System.out.println("Elige una opción");
+            System.out.println("A. Ver productos");
+            System.out.println("B. Ver edad de los voluntarios");
+            System.out.println("C. Ver edad de los perros");
+            System.out.println("D. Busqueda de edad de perros");
+            System.out.println("E. Busqueda de precios de productos");
+            System.out.println("F. Salir");
+            
+                    
+            answer= menu.next().charAt(0);
+            switch(answer){
+                case 'A':
+                    System.out.print("Precios de los Productos:");
+                    double precios[]= {9.8,7.0,-2.4,18,-5};
+                    System.out.println(Arrays.toString(precios));
+                    System.out.print("Precios de los Productos de menor a mayor:");
+                    precios=ordenarArreglo_seleccion(precios);
+                    System.out.println(Arrays.toString(precios));
+                    
+                    break;
+                    
+                case 'B': 
+                    System.out.print("Edad de los voluntarios:");
+                    int edad[]= {25,54,21,18,16};
+                    System.out.println(Arrays.toString(edad));
+                    System.out.print("Edad de los voluntarios de menor a mayor:");
+                    edad=ordenarEdad_seleccion(edad);
+                    System.out.println(Arrays.toString(edad));
+                    
+                    
+                    
+                    break;
+                
+                case 'C':
+                    int perro_Edad[]= {5,1,8,10,2};
+                    System.out.print("Edad de los perros:");
+                    System.out.println(Arrays.toString(perro_Edad));
+                    System.out.print("Edad de los perros de menor a mayor:");
+                    perro_Edad=ordenarPerros_seleccion(perro_Edad);
+                    System.out.println(Arrays.toString(perro_Edad));
+                break;
+                
+                case 'D':
+                     int perroEdad[]= {5,1,8,10,2};
+            int encontrada;
+        
+            for(int i=0; i<perroEdad.length; i++){
+            System.out.println("El contenido del arreglo es: " + Arrays.toString(perroEdad));
+            for (int j=0;j<perroEdad.length;j++){
+                System.out.println(" arreglo["+j+"] = " + perroEdad[j]);
+                
+            } 
+            Scanner entrada = new Scanner(System.in);
+            System.out.println("Ingrese la edad a buscar: ");
+            encontrada=entrada.nextInt();
+            
+            int edad_buscada=encontrada;
+            for (int a=0;a<perroEdad.length;a++)
+            {
+            if(perroEdad[a]==edad_buscada)
+            {
+            System.out.println("El precio buscado esta en la posición: "+a);
+            }
+            if(perroEdad[a] != edad_buscada)
+            {
+                System.out.println("No se encontró: ");
+            } 
+                   
+           break;
+            }
+            }
+            
+                case 'E': 
+                    
+                    double producto_precio[]={10.2,4.8,0.99,1.99,0.69};
+                    
+                    
+                    break;
+                    
+                case 'F': 
+                    System.out.println("Adiós");
+                    exit=true;
+                    break;
+                    
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+
+                    
+            }
+        }
+        
+    }
+    
+    public static double[] ordenarArreglo_seleccion (double a[]){
+        int indiceMenor,n;
+        
+        n = a.length; 
+        
+        for( int i = 0; i < n-1; i++)
+        {
+            indiceMenor = i;
+            for (int j=i+1; j<n; j++) if(a[j]<a[indiceMenor]) indiceMenor=j;
+                double var_tempo= a[i];
+            if(i != indiceMenor)
+                a[i] = a[indiceMenor];
+            a[indiceMenor]=var_tempo;
+            }
+        return a;
+        }
+    
+    
+        public static int[] ordenarEdad_seleccion (int a[]){
+        int indiceMenor,n;
+        
+        n = a.length; 
+        
+        for( int i = 0; i < n-1; i++)
+        {
+            indiceMenor = i;
+            for (int j=i+1; j<n; j++) if(a[j]<a[indiceMenor]) indiceMenor=j;
+                int var_tempo= a[i];
+            if(i != indiceMenor)
+                a[i] = a[indiceMenor];
+            a[indiceMenor]=var_tempo;
+            }
+        return a;
+        }
+     
+     public static int[] ordenarPerros_seleccion (int a[]){
+        int indiceMenor,n;
+        
+        n = a.length; 
+        
+        for( int i = 0; i < n-1; i++)
+        {
+            indiceMenor = i;
+            for (int j=i+1; j<n; j++) if(a[j]<a[indiceMenor]) indiceMenor=j;
+                int var_tempo= a[i];
+            if(i != indiceMenor)
+                a[i] = a[indiceMenor];
+            a[indiceMenor]=var_tempo;
+            }
+        return a;
+        }
+   
+     public int busquedaBin(int a[], int clave){
+         
+         int central, bajo, alto;
+         int valorCentral;
+         
+         bajo=0;
+         alto=a.length-1;
+         while(bajo <= alto){
+             central = (bajo + alto)/2;
+             valorCentral = a[central];
+             if (clave == valorCentral)
+                 return central;
+             else if(clave <valorCentral)
+                 alto=central -1;
+             else
+                 bajo=central+1;
+         }
+           return -1;
+         
+     }
+     
+     
+}
