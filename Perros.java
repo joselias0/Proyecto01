@@ -5,7 +5,7 @@ package proyecto01;
 //Programa       : Proyecto01.java
 //Programador    : José Elías Morales
 //Descripción    : Proyecto POO
-//Fecha Creación : 9 de junio de 2022
+//Fecha Creación : 9 de febrero de 2022
 //Revisión       : Ninguna
 //
 public final class Perros {
