@@ -3,11 +3,13 @@ package proyecto01;
 //Programa       : Proyecto01.java
 //Programador    : Daniel Barrera Quezada
 //Descripción    : Proyecto POO
-//Fecha Creación : 9 de junio de 2022
+//Fecha Creación : 9 de febrero de 2022
 //Revisión       : Ninguna
 //
 
-public final class Productos {
+
+// Implements Comparador le asigna metodos a Productos
+public final class Productos implements Comparador {
   
     private String nombre;
     private double precio;
@@ -66,5 +68,42 @@ public final class Productos {
         if(this.getCantidad()<=0) disponible = false;
         
         return disponible;
+    }
+
+    
+    //Metodos que permiten que el comparador pueda comparar precios en la clase productos
+    public double comparacion(){
+    return this.precio;
+    }
+    
+    @Override
+    public boolean igualQue(Object o) {
+        Productos s = (Productos)o; 
+        return this.comparacion()== s.comparacion();
+    }
+    
+
+    @Override
+    public boolean menorQue(Object o) {
+        Productos s = (Productos)o; 
+        return this.comparacion()< s.comparacion();
+    }
+
+    @Override
+    public boolean menorIgual(Object o) {
+        Productos s = (Productos)o; 
+        return this.comparacion()<= s.comparacion();
+    }
+
+    @Override
+    public boolean mayorQue(Object o) {
+        Productos s = (Productos)o; 
+        return this.comparacion()> s.comparacion();
+    }
+
+    @Override
+    public boolean mayorIgual(Object o) {
+        Productos s = (Productos)o; 
+        return this.comparacion()>= s.comparacion();
     }
  }
