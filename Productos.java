@@ -3,25 +3,50 @@ package proyecto01;
 //Programa       : Proyecto01.java
 //Programador    : Daniel Barrera Quezada
 //Descripción    : Proyecto POO
-//Fecha Creación : 9 de febrero de 2022
+//Fecha Creación : 9 de junio de 2022
 //Revisión       : Ninguna
 //
 
 
 // Implements Comparador le asigna metodos a Productos
-public final class Productos implements Comparador {
+public class Productos implements Comparador {
   
     private String nombre;
-    private double precio;
-    //private String id;
+    private float precio;
+    private int id;
     private int cantidad;
+    private String tipo;
+    private float higiene;
+    private String Alimento;
+    private String Accesorios;
     
     //insertar datos de productos
     public Productos(){
-        this.setNombre("Shampoo para perro adulto");
-        this.setPrecio(2.99);
-        this.setCantidad(100);
+        
     }
+
+    public Productos(int id, String nombre, float precio, int cantidad, String tipo, float higiene, String Alimento, String Accesorios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.tipo = tipo;
+        this.higiene = higiene;
+        this.Alimento = Alimento;
+        this.Accesorios = Accesorios;
+    }
+
+    public Productos(String nombre, float precio, int cantidad, String tipo, float higiene, String Alimento, String Accesorios) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.tipo = tipo;
+        this.higiene = higiene;
+        this.Alimento = Alimento;
+        this.Accesorios = Accesorios;
+    }
+    
+   
     //modificar nombre de producto
     public void setNombre(String _nombre){
     this.nombre = _nombre;
@@ -31,11 +56,11 @@ public final class Productos implements Comparador {
         return this.nombre;
     }
     //modificar precio del producto
-    public void setPrecio(double _precio){
+    public void setPrecio(float _precio){
         this.precio = _precio;
     }
     //mostrar precio del producto
-    public double getPrecio(){
+    public float getPrecio(){
         return this.precio;
     }
      //modificar cantidad de producto   
@@ -46,6 +71,50 @@ public final class Productos implements Comparador {
     public int getCantidad(){
         return this.cantidad;
     }
+    //modificar tipo de producto
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    //mostrar tipo de producto
+     public String getTipo(){
+        return this.tipo;
+    }
+     //mostrar id de producto
+    public int getId() {
+        return id;
+    }
+    //modificar id de producto
+    public void setId(int id) {
+        this.id = id;
+    }
+    //mostrar litros de producto
+    public float getHigiene() {
+        return higiene;
+    }
+    //modificar litros de producto
+    public void setHigiene(float higiene) {
+        this.higiene = higiene;
+    }
+    //mostrar caducidad de producto
+    public String getAlimento() {
+        return Alimento;
+    }
+    //modificar caducidad de producto
+    public void setAlimento(String Alimento) {
+        this.Alimento = Alimento;
+    }
+    //mostrar tipo de accesorio de producto
+    public String getAccesorios() {
+        return Accesorios;
+    }
+    //modificar tipo de accesorio de producto
+    public void setAccesorios(String Accesorios) {
+        this.Accesorios = Accesorios;
+    }
+    
+    
+     
+    
     
     //METODOS DE AGREGAR, EDITAR Y ELIMINAR
     //metodos agregar, editar y eliminar que serviran en el momento del uso de la base de datos
