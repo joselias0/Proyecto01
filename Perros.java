@@ -1,28 +1,56 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package proyecto01;
 
 //
 //Programa       : Proyecto01.java
 //Programador    : José Elías Morales
 //Descripción    : Proyecto POO
-//Fecha Creación : 9 de febrero de 2022
+//Fecha Creación : 9 de junio de 2022
 //Revisión       : Ninguna
 //
-public final class Perros {
-    //private int ID; este sera puesto de forma automatica en la base de datos
+public class Perros {
+    private int ID;
     private String nombre;
     private String raza;
     private String color;
     private String DescripcionFisica;
     
     //insertar datos de perros
-    public Perros(){
-     this.setNombre("Danger");
-     this.setRaza("Chihuahua");
-     this.setColor("Cafe");
-     this.setDescripcionFisica("Es una animal que sufrio una quebradura de pie ya que fue atropellado y quedo con secuelas");
+    public Perros(int ID, String nombre, String raza, String color, String DescripcionFisica) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.raza = raza;
+        this.color = color;
+        this.DescripcionFisica = DescripcionFisica;
     }
     
+    //Insertar datos de perro excluyendo el ID
+    public Perros(String nombre, String raza, String color, String DescripcionFisica) {
+        this.nombre = nombre;
+        this.raza = raza;
+        this.color = color;
+        this.DescripcionFisica = DescripcionFisica;
+    }
+
+    //Metodo constructor sin parametros
+    public Perros() {
+    }
+    
+    
+   
+    //Mostrar el ID del perro
+    public int getID() {
+        return ID;
+    }
+    
+    //Modificar el ID del perro
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+   
     //Modificar el nombre del perro
     public void setNombre(String nombre){
      this.nombre=nombre;
