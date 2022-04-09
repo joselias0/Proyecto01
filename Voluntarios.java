@@ -1,34 +1,51 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyecto01;
 
 //
 //Programa       : Proyecto01.java
 //Programador    : José Elías Morales
 //Descripción    : Proyecto POO
-//Fecha Creación : 9 de febrero de 2022
+//Fecha Creación : 9 de junio de 2022
 //Revisión       : Ninguna
 //
-public final class Voluntarios {
-    //private int ID; Este sera colocado de forma automatica en la base de datos
+public class Voluntarios {
+    private int ID;
     private String nombres;
     private String apellidos;
     private int edad;
     private String numeroDeTelefono;
     
     //insertar datos de voluntarios
-    public Voluntarios(){
-     this.setNombres("José Elías");
-     this.setApellidos("Morales Contreras");
-     this.setEdad(32);
-     this.setNumeroDeTelefono("7145-4567");
+
+    public Voluntarios(int ID, String nombres, String apellidos, int edad, String numeroDeTelefono) {
+        this.ID = ID;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.numeroDeTelefono = numeroDeTelefono;
+    }
+
+    public Voluntarios(String nombres, String apellidos, int edad, String numeroDeTelefono) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.numeroDeTelefono = numeroDeTelefono;
+    }
+
+    public Voluntarios() {
     }
     
+    
+    public int getID(){
+        return ID;
+    }
+
     //Modificar el nombre del voluntario
-    public void setNombres(String Nombre){
-    this.nombres=Nombre;
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setNombres(String Nombre) {
+        this.nombres=Nombre;
     }
     //Mostrar el nombre del voluntario
     public String getNombres(){
