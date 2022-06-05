@@ -199,7 +199,24 @@ public class Proyecto01 {
                                             createAl();
                                             break;
                                         case 'C':
-                                            createAcces();
+                                            
+                                            String nombre,tipo,tipoAccesorio;
+                                            float precio;
+                                            int cantidad;
+                                            Scanner scan1 = new Scanner(System.in);
+                                            Scanner scan2 = new Scanner(System.in);
+                                            Scanner scan3 = new Scanner(System.in);
+                                            System.out.println("Escribe el nombre del producto: ");
+                                            nombre = scan1.nextLine();
+                                            System.out.println("Escribe el precio del producto: ");
+                                            precio = scan1.nextFloat();
+                                            System.out.println("Escribe la cantidad del producto: ");
+                                            cantidad = scan1.nextInt();
+                                            System.out.println("Clasifica el tipo del producto: ");
+                                            tipo = scan2.nextLine();
+                                            System.out.println("Escribe el tipo de accesorio del producto: ");
+                                            tipoAccesorio = scan3.nextLine();
+                                            createAcces(nombre, precio, cantidad, tipo, tipoAccesorio);
                                             break;
                                         case 'D':
                                             System.out.println("Adiós");
@@ -253,7 +270,28 @@ public class Proyecto01 {
                                 updatePerro();
                                 break;
                             case 'C':
-                                updateVol();
+                                try {
+                                String nombres, apellidos, nTelefono;
+                                int edad, id;
+                                Scanner scan = new Scanner(System.in);
+                                Scanner scan2 = new Scanner(System.in);
+                                Scanner scan3 = new Scanner(System.in);
+                                System.out.println("Introduzca el ID a modificar: ");
+                                id = scan3.nextInt();
+                                System.out.println("Escribe el nombre del producto: ");
+                                nombres = scan.nextLine();
+                                System.out.println("Escribe el precio del producto: ");
+                                apellidos = scan.nextLine();
+                                System.out.println("Escribe la cantidad del producto: ");
+                                edad = scan.nextInt();
+                                System.out.println("Clasifica el tipo del producto: ");
+                                nTelefono = scan2.nextLine();
+                                updateVol(id, nombres, apellidos, edad, nTelefono);
+                                
+                            } catch (Exception e) {
+                                System.out.println("El caracter ingresado es incorrecto o invalido");
+                            }
+                                
                                 break;
                             case 'D':
                                 System.out.println("Adiós");
@@ -393,7 +431,15 @@ public class Proyecto01 {
                                 readPro();
                                 break;
                             case 'B':
-                                readPerro();
+                                try {
+                                Scanner scan = new Scanner(System.in);
+                                int id;
+                                System.out.println("Digite el ID a buscar:");
+                                id = scan.nextInt();
+                                readPerro(id);
+                            } catch (Exception e) {
+                                System.out.println("El caracter ingresado es incorrecto o invalido");
+                            }
                                 break;
                             case 'C':
                                 readVol();
@@ -790,30 +836,13 @@ public class Proyecto01 {
     //**************************************
     
     //Metodos de agregar y verificar disponibilidad para la subclase Accesorios en la clase Productos, conectada a la base de datos.
-    private static void createAcces() {
-        try{
-            String nombre, tipo, tipoAccesorio;
-            float precio;
-            int cantidad;
-            Scanner scan1 = new Scanner(System.in);
-            Scanner scan2 = new Scanner(System.in);
-            Scanner scan3 = new Scanner(System.in);
-            System.out.println("Escribe el nombre del producto: ");
-            nombre = scan1.nextLine();
-            System.out.println("Escribe el precio del producto: ");
-            precio = scan1.nextFloat();
-            System.out.println("Escribe la cantidad del producto: ");
-            cantidad = scan1.nextInt();
-            System.out.println("Clasifica el tipo del producto: ");
-            tipo = scan2.nextLine();
-            System.out.println("Escribe el tipo de accesorio del producto: ");
-            tipoAccesorio = scan3.nextLine();
-            AccesoriosBase b = new AccesoriosBase();
-            Accesorios e = new Accesorios(nombre, precio, cantidad, tipo, tipoAccesorio);
-            System.out.println(b.createw(e));
-        }catch(Exception e){
-            System.out.println("El caracter ingresado es incorrecto o invalido");
-        }
+    public static Object createAcces(String nombre, float precio,int cantidad,String tipo, String tipoAccesorio) {
+        
+           
+        AccesoriosBase b = new AccesoriosBase();
+        Accesorios w = new Accesorios(nombre, precio, cantidad, tipo, tipoAccesorio);
+        System.out.println(b.createw(w));
+        return null;
     }
 
     private static void dispAcces() {
@@ -949,22 +978,16 @@ public class Proyecto01 {
         }
     }
 
-    private static void readPerro() {
-        try {
-            List<Perros> lista = new ArrayList<>();
-            Scanner scan = new Scanner(System.in);
-            int id;
-            System.out.println("Digite el ID a buscar:");
-            id = scan.nextInt();
-            PerrosBase base = new PerrosBase();
-            lista = base.read(id);
-            System.out.println("*ID*" + "     " + "*Nombre*" + "     " + "*Raza*" + "           " + "*Color*" + "              " + "*Descripcion Fisica*");
-            for (int i = 0; i < lista.size(); i++) {
-                System.out.println(lista.get(i).getID() + "        " + lista.get(i).getNombre() + "        " + lista.get(i).getRaza() + "        " + lista.get(i).getColor() + "        " + lista.get(i).getDescripcionFisica());
-            }
-        } catch (Exception e) {
-            System.out.println("El caracter ingresado es incorrecto o invalido");
+    public static Object readPerro(int id) {
+        PerrosBase base = new PerrosBase();
+        Perros prro = new Perros();
+        List<Perros> lista = new ArrayList<>();
+        lista = base.read(id);
+        System.out.println("*ID*" + "     " + "*Nombre*" + "     " + "*Raza*" + "           " + "*Color*" + "              " + "*Descripcion Fisica*");
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i).getID() + "        " + lista.get(i).getNombre() + "        " + lista.get(i).getRaza() + "        " + lista.get(i).getColor() + "        " + lista.get(i).getDescripcionFisica());
         }
+        return null;
     }
     
     //**************************************
@@ -998,28 +1021,10 @@ public class Proyecto01 {
         }
     }
 
-    private static void updateVol() {
-        try {
-            String nombres, apellidos, nTelefono;
-            int edad, id;
-            Scanner scan = new Scanner(System.in);
-            Scanner scan2 = new Scanner(System.in);
-            Scanner scan3 = new Scanner(System.in);
-            System.out.println("Introduzca el ID a modificar: ");
-            id = scan3.nextInt();
-            System.out.println("Escribe el nombre del producto: ");
-            nombres = scan.nextLine();
-            System.out.println("Escribe el precio del producto: ");
-            apellidos = scan.nextLine();
-            System.out.println("Escribe la cantidad del producto: ");
-            edad = scan.nextInt();
-            System.out.println("Clasifica el tipo del producto: ");
-            nTelefono = scan2.nextLine();
-            VoluntariosBase b = new VoluntariosBase();
-            System.out.println(b.update(id, nombres, apellidos, edad, nTelefono));
-        } catch (Exception e) {
-            System.out.println("El caracter ingresado es incorrecto o invalido");
-        }        
+    public static Object updateVol(int id, String nombres, String apellidos, int edad, String nTelefono) {
+        VoluntariosBase b = new VoluntariosBase();
+        System.out.println(b.update(id, nombres, apellidos, edad, nTelefono));
+        return null;
     }
 
     private static void deleteVol() {
@@ -1067,4 +1072,4 @@ public class Proyecto01 {
     //**************************************
     //**           FIN VOLUNTARIOS         **
     //**************************************
-}   
+}    
